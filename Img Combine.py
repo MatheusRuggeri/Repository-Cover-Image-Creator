@@ -1,16 +1,20 @@
 from PIL import Image
 
-images = [Image.open(x) for x in ['Images/PC_Crop.png', 'Images/Smartphone_Crop.png']]
-widths, heights = zip(*(i.size for i in images))
+images = [Image.open(x) for x in ['Combined_PC.png', 'Images/Smartphone_Crop.png']]
 
-total_width = sum(widths)
-max_height = max(heights)
+New_Image_X = images[0].size[0]
+New_Image_Y = images[0].size[1]
 
-new_im = Image.new('RGBA', (total_width, max_height))
+layer1 = Image.new('RGBA', (New_Image_X, New_Image_Y))
+layer2 = Image.new('RGBA', (New_Image_X, New_Image_Y))
 
-x_offset = 0
-for im in images:
-  new_im.paste(im, (x_offset,0))
-  x_offset += im.size[0]
+width_SP, height_SP = images[1].size
+Smartphone_Resize = images[1].resize([int(width_SP/1.7), int(height_SP/1.7)], Image.ANTIALIAS) 
 
-new_im.save('test.png')
+layer1.paste(images[0], (0,0))
+layer2.paste(Smartphone_Resize, (2000,160))
+
+images[0].convert('RGBA')
+images[1].convert('RGBA')
+
+Image.alpha_composite(layer1, layer2).save("Combined_Both.png")

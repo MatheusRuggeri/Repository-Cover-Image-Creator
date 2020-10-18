@@ -12,6 +12,7 @@ Procedure:
 '''
 
 from PIL import Image
+import sys
 
 file_destination='PC_Print_Save.png'
 imagefile = open(file_destination, 'wb')
@@ -19,8 +20,8 @@ imagefile = open(file_destination, 'wb')
 PC = Image.open('Images/PC_Crop.png')
 PC_width, PC_height = PC.size
 # Screen Square -> (360,85) - (1686,85) / (360,926) - (1686,926)
-Screen_X_Size = 1686 - 360
-Screen_Y_Size = 926 - 85
+Screen_X_Size = 1686 - 360 + 1
+Screen_Y_Size = 926 - 85 + 1
 
 Print_PC = Image.open('Print_PC.png')
 Print_PC_width, Print_PC_height = Print_PC.size
@@ -32,7 +33,7 @@ PC_Left_Line = PC.crop( (361, 0, 361+1, PC_height) )
 PC_Left2Center = PC.crop( (361, 0, 870, PC_height) )
 PC_Center = PC.crop( (870, 0, 870+315, PC_height) )
 PC_Center2Right = PC.crop( (1185, 0, 1185+501, PC_height) )
-PC_Right_Line = PC.crop( (1532, 0, 1532+1, PC_height) )
+PC_Right_Line = PC.crop( (1686, 0, 1686+1, PC_height) )
 PC_Right = PC.crop( (1686, 0, 1686+360, PC_height) )
 
 
@@ -71,6 +72,9 @@ if (Print_PC_width > Screen_X_Size):
     
     PC_New_Image.paste(PC_Right, (xPosition,yPosition))
     xPosition = xPosition + PC_Right.size[0]
+else:
+    print("Image too small")
+    sys.exit()
     
 PC_New_Image.save(open("Temp/XsizeFixed.png", 'wb'), "png", quality=100)
 PC_New_Image.close()
@@ -92,24 +96,31 @@ if (Print_PC_height > Screen_Y_Size):
     New_Image_Y = PC_New_Image.size[1] + Print_PC_height - Screen_Y_Size
     PC_New_Image = Image.new('RGBA', (New_Image_X, New_Image_Y))
     
-    
     Num_new_lines = Print_PC_height - Screen_Y_Size
     
     PC_New_Image.paste(PC_Top, (xPosition, yPosition))
     yPosition = yPosition + PC_Top.size[1]
     
-    while (addedLines <= Num_new_lines):
+    while (addedLines < Num_new_lines):
         addedLines += 1
         PC_New_Image.paste(PC_CenterLine, (xPosition, yPosition))
         yPosition = yPosition + PC_CenterLine.size[1]
     
     PC_New_Image.paste(PC_Bottom, (xPosition, yPosition))
     yPosition = yPosition + PC_Bottom.size[1]
+        
+else:
+    print("Image too small")
+    sys.exit()
     
 PC_New_Image.save(open("Temp/Ready.png", 'wb'), "png", quality=100)
+
+
+Combined_PC = Image.new('RGBA', (New_Image_X, New_Image_Y))
+Combined_PC.paste(PC_New_Image, (0,0))
+Combined_PC.paste(Print_PC, (360,85))
+
+Combined_PC.save('Combined_PC.png')
+
 PC_New_Image.close()
-
-
-PC.paste(Print_PC, (360, 85))
-PC.save('mix.png')
-PC.close()
+Combined_PC.close()
