@@ -14,9 +14,6 @@ Procedure:
 from PIL import Image
 import sys
 
-file_destination='PC_Print_Save.png'
-imagefile = open(file_destination, 'wb')
-
 PC = Image.open('Images/PC_Crop.png')
 PC_width, PC_height = PC.size
 # Screen Square -> (360,85) - (1686,85) / (360,926) - (1686,926)
@@ -120,7 +117,7 @@ Combined_PC = Image.new('RGBA', (New_Image_X, New_Image_Y))
 Combined_PC.paste(PC_New_Image, (0,0))
 Combined_PC.paste(Print_PC, (360,85))
 
-Combined_PC.save('Combined_PC.png')
+Combined_PC.save('Temp/Combined_PC.png')
 
 PC_New_Image.close()
 Combined_PC.close()

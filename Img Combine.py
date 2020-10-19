@@ -1,6 +1,6 @@
 from PIL import Image
 
-images = [Image.open(x) for x in ['Combined_PC.png', 'Combined_SP.png']]
+images = [Image.open(x) for x in ['Temp/Combined_PC.png', 'Temp/Combined_SP.png']]
 
 New_Image_X = images[0].size[0]
 New_Image_Y = images[0].size[1]

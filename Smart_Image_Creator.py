@@ -14,9 +14,6 @@ Procedure:
 from PIL import Image
 import sys
 
-file_destination='SP_Print_Save.png'
-imagefile = open(file_destination, 'wb')
-
 SP = Image.open('Images/Smartphone_Crop.png')
 SP_width, SP_height = SP.size
 # Screen Square -> (64,57) - (914,57) / (64,1900) - (914,1900)
@@ -110,6 +107,6 @@ layer2 = Image.new('RGBA', (New_Image_X, New_Image_Y))
 layer1.paste(Print_SP, (64,57))
 layer2.paste(SP_New_Image, (0,0))
 
-Image.alpha_composite(layer1, layer2).save("Combined_SP.png")
+Image.alpha_composite(layer1, layer2).save("Temp/Combined_SP.png")
 
 SP_New_Image.close()
