@@ -1,6 +1,6 @@
 from PIL import Image
 
-images = [Image.open(x) for x in ['Combined_PC.png', 'Images/Smartphone_Crop.png']]
+images = [Image.open(x) for x in ['Combined_PC.png', 'Combined_SP.png']]
 
 New_Image_X = images[0].size[0]
 New_Image_Y = images[0].size[1]
@@ -13,8 +13,5 @@ Smartphone_Resize = images[1].resize([int(width_SP/1.7), int(height_SP/1.7)], Im
 
 layer1.paste(images[0], (0,0))
 layer2.paste(Smartphone_Resize, (2000,160))
-
-images[0].convert('RGBA')
-images[1].convert('RGBA')
 
 Image.alpha_composite(layer1, layer2).save("Combined_Both.png")
