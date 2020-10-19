@@ -36,10 +36,12 @@ You can use a desktop and/or mobile print screen and compose an image that shows
 ## 🔖 Example
 
 This is how the code works:
+You take a printscreen from your mobile and/or your desktop page or app, this code put a frame.
+If your code has differences between mobile and desktop versions, you can compose a new image showing the two versions side by side.
 
-- [IMAGE 1]
-- [IMAGE 2]
-- [IMAGE COMPOSITION]
+<p align="center">
+  <img alt="Example" src=".github/Img1.png" width="100%">
+</p>
 
 ## :memo: License
 
