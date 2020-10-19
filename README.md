@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Image Creator" title="Image Creator" src=".github/logo.svg" />
+    <img alt="Image Creator" title="Image Creator" src=".github/logo.png" />
 </h1>
 
 <p align="center">
@@ -37,7 +37,7 @@ You can use a desktop and/or mobile print screen and compose an image that shows
 
 This is how the code works:
 You take a printscreen from your mobile and/or your desktop page or app, this code put a frame.
-If your code has differences between mobile and desktop versions, you can compose a new image showing the two versions side by side.
+If your code has differences between mobile and desktop versions, you can combine to a new image showing the two versions side by side.
 
 <p align="center">
   <img alt="Example" src=".github/Img1.png" width="100%">
