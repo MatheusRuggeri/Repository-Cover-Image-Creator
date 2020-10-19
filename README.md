@@ -1,6 +1,8 @@
-<h1 align="center">
+<h2 align="center">
+    Image Creator to your Repository Cover
+    </br></br>
     <img alt="Image Creator" title="Image Creator" src=".github/logo.png" />
-</h1>
+</h2>
 
 <p align="center">
   <a href="#-technology">Technology</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
