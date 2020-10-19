@@ -25,7 +25,7 @@
 
 ## 🚀 Technology
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+This project uses:
 
 - [Python](https://python.org/)
 - [PIL - Python Imaging Library](https://www.pythonware.com/products/pil/)
@@ -33,13 +33,17 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Project
 
 This project helps you to create a nice image as cover to your project in Github.
+</br>
 You can use a desktop and/or mobile print screen and compose an image that shows to visitors your project.
 
 ## 🔖 Example
 
 This is how the code works:
 You take a printscreen from your mobile and/or your desktop page or app, this code put a frame.
+</br>
 If your code has differences between mobile and desktop versions, you can combine to a new image showing the two versions side by side.
+</br>
+Since the code is not ready yet, you need to execute the PC_Image_Creator.py, then Smart_Image_Creator.py and then Img_Combine.py
 
 <p align="center">
   <img alt="Example" src=".github/Img1.png" width="100%">
